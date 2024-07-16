@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<AssemblyName>ProrenaDynamicJSON</AssemblyName>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>Dynamic JSON</Title>
+		<Copyright>Copyright © 2024 by Prorena GmbH.</Copyright>
+		<Company>Prorena GmbH</Company>
+		<Authors>Florian Weihmann</Authors>
+		<Description>Library to convert JSON-objects into real dynamic ExpandoObjects.</Description>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+		<AssemblyVersion>1.0.1</AssemblyVersion>
+		<Version>1.0.1</Version>
+		<FileVersion>1.0.1</FileVersion>
+		<Product>Prorena Dynamic JSON</Product>
+		<PackageTags>JSON;ExpandoObject;Converter</PackageTags>
+		<PackageLicenseFile>LICENSE.TXT</PackageLicenseFile>
+		<PackageIcon>s4y.png</PackageIcon>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
+		<WarningLevel>6</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
+		<WarningLevel>6</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="s4y.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE.TXT">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="s4y.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </Resource>
+	</ItemGroup>
+</Project>
