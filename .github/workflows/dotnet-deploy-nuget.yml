@@ -31,12 +31,15 @@ jobs:
           
       - name: Build solution and generate NuGet package
         run: | 
+          echo %NUGET_AUTH_TOKEN%
           dotnet restore
           msbuild /t:Build /p:Configuration=Release /p:TargetFrameworks="net6.0"
           msbuild /t:Build /p:Configuration=Release /p:TargetFrameworks="net8.0"
-          dotnet pack -c Release -o out  
+          dotnet pack -c Release -o out
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
 
       - name: Push generated package to nuget.org registry
-        run: dotnet nuget push  */bin/Release/*.nupkg --skip-duplicate --no-symbols true --api-key %NUGET_AUTH_TOKEN% --source "https://api.nuget.org/v3/index.json"
+        run: dotnet nuget push  */bin/Release/*.nupkg --skip-duplicate --no-symbols --api-key %NUGET_AUTH_TOKEN% --source "https://api.nuget.org/v3/index.json"
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
