@@ -40,5 +40,5 @@ jobs:
       - name: Push generated package to nuget.org registry
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
-        run: dotnet nuget push */bin/Release/*.nupkg --skip-duplicate --no-symbols --source "https://api.nuget.org/v3/index.json" --api-key %NUGET_AUTH_TOKEN%
+        run: dotnet nuget push */bin/Release/*.nupkg --skip-duplicate --no-symbols --source "https://nuget.pkg.github.com/${{github.repository_owner}}/index.json" --api-key %NUGET_AUTH_TOKEN%
     
